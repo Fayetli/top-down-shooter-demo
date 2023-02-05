@@ -7,12 +7,6 @@ namespace TopDown.Gameplay.FireSystem
     {
         [SerializeField] private Rigidbody2D rb;
         [SerializeField] private float force;
-        [SerializeField] private SpriteRenderer spriteRenderer;
-
-        public void Init(Sprite sprite)
-        {
-            spriteRenderer.sprite = sprite;
-        }
 
         public void Fire()
         {

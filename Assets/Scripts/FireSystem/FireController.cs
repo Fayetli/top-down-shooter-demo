@@ -7,7 +7,6 @@ namespace TopDown.Gameplay.FireSystem
     {
         [SerializeField] private Bullet bulletPrefab;
         [SerializeField] private Transform[] firePoints;
-        [SerializeField] private Sprite[] bulletSprites;
 
         private float timer = 0f;
         private bool isRightPoint = false;
@@ -42,7 +41,6 @@ namespace TopDown.Gameplay.FireSystem
                 isRightPoint ? firePoints[0].position : firePoints[1].position,
                 bulletRotation);
 
-            bullet.Init(bulletSprites[UnityEngine.Random.Range(0, bulletSprites.Length)]);
             bullet.Fire();
             Destroy(bullet.gameObject, 5f);
 
