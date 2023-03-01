@@ -12,6 +12,7 @@ namespace TopDown.Gameplay.Movement
         private Camera cam;
 
         private const float angleOffset = 90f;
+
         private void Start()
         {
             cam = Camera.main;

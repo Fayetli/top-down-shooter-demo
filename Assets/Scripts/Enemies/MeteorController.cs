@@ -1,6 +1,6 @@
+using UnityEngine;
 using System.Collections.Generic;
 using System.Linq;
-using UnityEngine;
 
 namespace TopDown.Gameplay.Enemies
 {
@@ -9,12 +9,11 @@ namespace TopDown.Gameplay.Enemies
         [SerializeField] private Meteor meteorPrefab;
         [SerializeField] private Transform player;
         [SerializeField] private Transform container;
+
         private List<Transform> meteors;
 
         private float timer = 0f;
-        private float delay = 2f;
-        private const float decreaseDelayVolume = 0.1f;
-        private Vector2 clampDelay = new Vector2(0.25f, 2f);
+        private const float delay = 0.25f;
 
         private void Start()
         {
@@ -28,8 +27,6 @@ namespace TopDown.Gameplay.Enemies
             if(timer >= delay)
             {
                 timer = 0f;
-                delay -= decreaseDelayVolume;
-                delay = Mathf.Clamp(delay, clampDelay.x, clampDelay.y);
 
                 GenerateMeteor();
             }
@@ -45,9 +42,7 @@ namespace TopDown.Gameplay.Enemies
 
         private void GenerateMeteor()
         {
-            var spawnPosition = player.position +
-                new Vector3(Random.Range(-1f, 1f), Random.Range(-1f, 1f)).normalized
-                * Random.Range(5f, 6f);
+            var spawnPosition = player.position + new Vector3(Random.Range(-1f, 1f), Random.Range(-1f, 1f)).normalized * Random.Range(5f, 6f);
 
             var meteor = Instantiate(meteorPrefab, spawnPosition, Quaternion.identity, container);
             meteor.Init(player);

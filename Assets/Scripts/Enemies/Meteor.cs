@@ -23,5 +23,13 @@ namespace TopDown.Gameplay.Enemies
         {
             Destroy(gameObject);
         }
+
+        public void OnTriggerEnter2D(Collider2D collision)
+        {
+            if(collision.TryGetComponent<Character>(out var character))
+            {
+                character.OnDamaged();
+            }
+        }
     }
 }
